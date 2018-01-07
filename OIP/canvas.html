@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CANVAS</title>
+  </head>
+  <body>
+    <h1>OIP KR3</h1>
+    <form name="data_IN">
+      D3:<input type="text" name="D3" value="42"><br>
+      D4:<input type="text" name="D4" value="52"><br>
+    </form>
+    <button onclick="draw();"> DRAW </button>
+
+    <button onclick="clean();"> CLEAR </button>
+    <br>
+    <canvas id="myCanvas" width="800" height="400" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+
+        function clean() {
+          //Cleaning the lines
+          ctx.clearRect(0, 0, c.width, c.height);
+        }
+
+        function draw() {
+          //Read Form Data
+          var d3 = document.data_IN.D3.value*1;
+          var d4 = document.data_IN.D4.value*1;
+
+          //Initializing the dimensions
+          var d1 = 30, d2 = 30, d5 = 15, d6 = 25, d7 = 30, d8 = 60, d9 = 30, d10 = 15, d11 = 86, k = 0, s = 0;
+          d1*=3;
+          d2*=3;
+          d3*=3;
+          d4*=3;
+          d5*=3;
+          d6*=3;
+          d7*=3;
+          d8*=3;
+          d9*=3;
+          d10*=3;
+          d11*=3;
+
+          k = (d4 - d1)/2;
+          s = (d11 - d4)/2;
+
+          l = (d3 - d1)/2;
+
+          // if(d4 => d1) {
+          //   k = (d4 - d1)/2;
+          //   s = (d11 - d4)/2;
+          // }
+
+          ctx.beginPath();
+
+          //First proection
+          ctx.setLineDash([0,0,0,0]);
+          ctx.lineWidth="1";
+          ctx.moveTo(155, 20);
+          ctx.rect(155, 20, d1, d2);
+          ctx.moveTo(155 - k, 20 + d1);
+          ctx.lineTo(155 + (d4 - k), 20 + d1);
+          ctx.lineTo(155 + (d4 - k) + s, 20 + d1 + d5 + (d9-d10));
+          ctx.lineTo(155 + (d4 - k) + s, 20 + d1 + d5 + d9);
+          ctx.lineTo(155 + (d4 - k) + s - d11, 20 + d1 + d5 + d9);
+          ctx.lineTo(155 + (d4 - k) + s - d11, 20 + d1 + d5 + (d9-d10));
+          ctx.lineTo(155 - k, 20 + d1);
+          ctx.moveTo(155 + ((d4 - k) + s - d11) + (d11-((d11+d4)/2))/2, 20 + d1 + d5);
+          ctx.lineTo(155 + ((d4 - k) + s - d11) + (d11-((d11+d4)/2))/2 + (d11+d4)/2, 20 + d1 + d5);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.setLineDash([10,5,10,5]);
+          ctx.lineWidth="1";
+          ctx.moveTo(155 + ((d4 - k) + s - d11) + (d11-((d11+d4)/2))/2, 35 + d1 + d5);
+          ctx.lineTo(155 + ((d4 - k) + s - d11) + (d11-((d11+d4)/2))/2 + (d11+d4)/2, 35 + d1 + d5);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.setLineDash([20,5,2,5]);
+          ctx.lineWidth="1";
+          ctx.moveTo(155 + d1/2, 10);
+          ctx.lineTo(155 + d1/2, 30 + d1 + (d5+d9));
+          ctx.stroke();
+
+          //Third proection
+          ctx.beginPath();
+          ctx.setLineDash([0,0,0,0]);
+          ctx.lineWidth="1";
+          ctx.moveTo(555, 20);
+          ctx.rect(555, 20, d1, d2);
+          ctx.moveTo(555 - l, 20 + d1);
+          ctx.lineTo(555 + (d3 - l), 20 + d1);
+          ctx.lineTo(555 + (d3 - l), 20 + d1 + d5);
+          ctx.lineTo(555 + (d3 - l) + (d8-d3)/2, 20 + d1 + d5);
+          ctx.lineTo(555 + (d3 - l) + (d8-d3)/2, 20 + d1 + d5 + d9);
+          ctx.lineTo(555 + d1, 20 + d1 + d5 + d9);
+          ctx.lineTo(555 + d1, 20 + d1 + d5 + (d9 - 75));
+          ctx.lineTo(555 + d1 - 90, 20 + d1 + d5 + (d9 - 75));
+          ctx.lineTo(555 + d1 - 90, 20 + d1 + d5 + d9);
+          ctx.lineTo(555 - l - (d8-d3)/2, 20 + d1 + d5 + d9);
+          ctx.lineTo(555 - l - (d8-d3)/2, 20 + d1 + d5);
+          ctx.lineTo(555 - l, 20 + d1 + d5);
+          ctx.lineTo(555 - l, 20 + d1);
+          ctx.moveTo(555 - l - (d8-d3)/2, 200);
+          ctx.lineTo(555, 200);
+          ctx.moveTo(555 + d1, 200);
+          ctx.lineTo(555 + d1 + l + (d8-d3)/2, 200);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.setLineDash([20,5,2,5]);
+          ctx.lineWidth="1";
+          ctx.moveTo(555 + d1/2, 10);
+          ctx.lineTo(555 + d1/2, 30 + d1 + (d5+d9));
+          ctx.stroke();
+        }
+
+        </script>
+  </body>
+</html>
