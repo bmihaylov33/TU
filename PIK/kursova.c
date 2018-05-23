@@ -26,7 +26,8 @@ void ShowAll();
 
 int main() {
   Menu();
-
+  Load();
+  
   return 0;
 }
 
@@ -56,38 +57,41 @@ void Menu() {
       printf("%d\n", choice);
     switch(choice) {
       case 1: {
-        Load();
+        // Load();
         InsertNewBook();
-        Save();
+        // Save();
         head = NULL;
         break;
       }
       case 2: {
-        Load();
+        // Load();
         Update();
-        Save();
+        // Save();
         head = NULL;
         break;
       }
       case 3: {
-        Load();
+        // Load();
         SearchID();
         head = NULL;
         break;
       }
       case 4: {
-        Load();
+        // Load();
         SearchAuthor();
         head = NULL;
         break;
       }
       case 5: {
-        Load();
+        // Load();
         ShowAll();
         head = NULL;
         break;
       }
-      case 0: exit(2);
+      case 0: {
+        Save();
+        exit(2);
+      }
     }
   }
 }
@@ -312,7 +316,7 @@ void Save() {
     //   printf("Error writing flag!\n");
     //   fclose(fp);
     // }
-    if((fwrite(temp->ID, sizeID, 1, fp)!=1) {
+    if((fwrite(temp->ID, sizeID, 1, fp))!=1) {
 			printf("Error writing!\n");
 			exit(1);
 		}
